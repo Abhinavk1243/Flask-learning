@@ -28,6 +28,7 @@ def mysl_pool_connection(section):
               'user' : getconfig(section,"user"),
               'database' : getconfig(section,"database"),
               'password' : getconfig(section,"password"),  
+              'auth_plugin': 'mysql_native_password'
             }
     
     cnxn = pooling.MySQLConnectionPool(pool_name = "student",**dbconfig)
@@ -39,7 +40,7 @@ def logger():
     logger.setLevel(lg.DEBUG)
     formatter = lg.Formatter('%(asctime)s : %(name)s : %(filename)s : %(levelname)s\
                              :%(funcName)s :%(lineno)d : %(message)s ')
-    file_handler =lg.FileHandler("D:/Abhinav\GitHub/python-learning/scripts/loggers_files/logsfile.log")
+    file_handler =lg.FileHandler("logsfile.log")
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
     return logger
